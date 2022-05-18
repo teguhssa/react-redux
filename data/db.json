@@ -1,0 +1,29 @@
+{
+  "Kontaks": [
+    {
+      "id": 1,
+      "nama": "Teguh",
+      "nohp": "121211221"
+    },
+    {
+      "id": 2,
+      "nama": "Satria",
+      "nohp": "0987767678998"
+    },
+    {
+      "id": 7,
+      "nama": "adisa",
+      "nohp": "8099898989"
+    },
+    {
+      "id": 8,
+      "nama": "lisa",
+      "nohp": "09876676"
+    },
+    {
+      "id": 9,
+      "nama": "yusuf bin fulan",
+      "nohp": "097876676"
+    }
+  ]
+}
