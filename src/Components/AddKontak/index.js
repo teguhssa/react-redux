@@ -45,15 +45,6 @@ export default function AddKontak() {
   }, [detailKontakResult, dispatch]);
 
   useEffect(() => {
-    if (addKontakResult) {
-      dispatch(getListKontak());
-      setNama("");
-      setNohp("");
-      // console.log("SET NAMA IS HERE", setNama)
-    }
-  }, [addKontakResult, dispatch]);
-
-  useEffect(() => {
     if (updateKontakResult) {
       dispatch(getListKontak());
       setNama("");
