@@ -60,7 +60,7 @@ export default function AddKontak() {
       <form onSubmit={(e) => handleSubmit(e)}>
         <input
           type="text"
-          name="nama"
+          name="name"
           placeholder="text here"
           value={nama}
           onChange={(e) => setNama(e.target.value)}

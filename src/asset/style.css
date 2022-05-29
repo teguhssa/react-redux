@@ -1,0 +1,94 @@
+.thumbnail {
+  height: 200px;
+}
+
+.box-form {
+  width: 280px;
+  margin: 0 auto;
+  background-color: #fcfcfc;
+  padding: 20px 50px 40px;
+  box-shadow: 1px 4px 10px 1px #aaa;
+  font-family: sans-serif;
+  margin-top: 30px;
+}
+
+.box-form * {
+  box-sizing: border-box;
+}
+
+.box-form h4 {
+  text-align: center;
+}
+
+.box-form input {
+  margin-bottom: 30px;
+}
+
+.box-form input[type="text"] {
+  display: block;
+  height: 32px;
+  padding: 6px 16px;
+  width: 100%;
+  border: none;
+  background-color: #f3f3f3;
+}
+
+.btn-save {
+  display: block;
+  margin: 20px auto 0;
+  width: 150px;
+  height: 40px;
+  border-radius: 25px;
+  border: none;
+  color: #eee;
+  font-weight: 700;
+  box-shadow: 1px 4px 10px 1px #aaa;
+  background-color: purple;
+  cursor: pointer;
+}
+
+/* table */
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+}
+
+table th,
+table td {
+  padding: 0.625em;
+  text-align: center;
+}
+
+table th {
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.btn-action {
+  background-color: #ebce15;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 5px;
+  width: 50px;
+  cursor: pointer;
+}
+
+.prev{
+  width: 100px;
+}

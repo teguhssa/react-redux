@@ -52,7 +52,8 @@ export const getListKontak = () => {
 };
 
 export const addKontak = (data) => {
-  console.log("2. Masuk action");
+  // console.log("2. Masuk action");
+  // console.log("text here", ADD_LIST_KONTAK)
   return (dispatch) => {
     // loading
     dispatch({
