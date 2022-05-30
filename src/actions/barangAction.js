@@ -64,6 +64,7 @@ export const addBarang = (data) => {
     const formData = new FormData();
     formData.append("nama_barang", data.nama_barang);
     formData.append("keterangan", data.keterangan);
+    formData.append("qty", data.qty);
     formData.append("harga", data.harga);
     formData.append("gambar", data.gambar);
 
@@ -169,6 +170,7 @@ export const editBarang = (data) => {
     const formData = new FormData();
     formData.append("nama_barang", data.nama_barang);
     formData.append("keterangan", data.keterangan);
+    formData.append("qty", data.qty)
     formData.append("harga", data.harga);
     if (data.gambar !== null) {
       formData.append("gambar", data.gambar);

@@ -13,7 +13,7 @@ export default function AddBarang() {
   const [namaBarang, setNamaBarang] = useState("");
   const [keterangan, setKeterangan] = useState("");
   const [harga, setHarga] = useState("");
-  // const [gambar, setGambar] = useState("");
+  const [qty, setQty] = useState("")
   const [idBarang, setIdBarang] = useState("");
   const [image, setImage] = useState(null);
   const [thumb, setThumb] = useState(null);
@@ -77,6 +77,7 @@ export default function AddBarang() {
             id_barang: idBarang,
             nama_barang: namaBarang,
             keterangan: keterangan,
+            qty: qty,
             harga: harga,
             gambar: typeof image === "object" ? image : null,
           })
@@ -86,6 +87,7 @@ export default function AddBarang() {
           addBarang({
             nama_barang: namaBarang,
             keterangan: keterangan,
+            qty: qty,
             harga: harga,
             gambar: image,
           })
@@ -102,6 +104,7 @@ export default function AddBarang() {
       dispatch(getListBarang());
       setNamaBarang("");
       setKeterangan("");
+      setQty("")
       setHarga("");
       setImage(null);
       // setThumb("");
@@ -112,6 +115,7 @@ export default function AddBarang() {
     if (detailBarangResult) {
       setNamaBarang(detailBarangResult.nama_barang);
       setKeterangan(detailBarangResult.keterangan);
+      setQty(detailBarangResult.qty)
       setHarga(detailBarangResult.harga);
       setImage(detailBarangResult.gambar);
       setIdBarang(detailBarangResult.id_barang);
@@ -129,6 +133,7 @@ export default function AddBarang() {
       dispatch(getListBarang());
       setNamaBarang("");
       setKeterangan("");
+      setQty("")
       setHarga("");
       setImage(null);
       // setGambar("");
@@ -146,9 +151,7 @@ export default function AddBarang() {
             name="nama_barang"
             value={namaBarang}
             onChange={(e) => setNamaBarang(e.target.value)}
-            // onBlur={() => simpleValidator.current.showMessageFor("keterangan")}
-          />
-          {/* <div style={{ color: "red" }}>{namaError}</div> */}
+            />
           <input
             type="text"
             placeholder="Keterangan barang"
@@ -162,6 +165,13 @@ export default function AddBarang() {
             keterangan,
             "required"
           )}
+          <input
+            type="text"
+            placeholder="QTY"
+            name="qty"
+            value={qty}
+            onChange={(e) => setQty(e.target.value)}
+            />
           <input
             type="text"
             placeholder="Harga barang"

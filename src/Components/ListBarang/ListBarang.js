@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 import {
   getListBarang,
   deleteBarang,
@@ -32,7 +33,37 @@ export default function ListBarang() {
   }, [deleteBarangResult, dispatch]);
 
   const handleGenerate = () => {
-    alert("Download document");
+    axios({
+      method: "POST",
+      url: "http://localhost:8000/generate",
+      timeout: 1200000,
+      data: {
+        data_barang: [
+          ...getListBarangResult.map((itm) => {
+            return {
+              nama_barang: itm.nama_barang,
+              keterangan: itm.keterangan,
+              qty: itm.qty,
+              harga: itm.harga,
+            };
+          }),
+        ],
+      },
+    }).then((response) => {
+      console.log(response);
+      axios
+        .get(
+          "http://localhost:8000/" +
+            response.data.filepath +
+            "/" +
+            response.data.filename
+        )
+        .then((res) => {
+          console.log(res);
+        });
+    });
+
+    // console.log(getListBarangResult)
   };
 
   return (
@@ -42,7 +73,7 @@ export default function ListBarang() {
         startIcon={<FileDownloadOutlinedIcon />}
         onClick={handleGenerate}
       >
-        Download
+        Generate to Pdf
       </Button>
       <table>
         <caption>Data Barang</caption>
@@ -50,6 +81,7 @@ export default function ListBarang() {
           <tr>
             <th scope="col">Nama Barang</th>
             <th scope="col">Keterangan Barang</th>
+            <th scope="col">QTY</th>
             <th scope="col">Harga Barang</th>
             <th scope="col">Gambar Barang</th>
             <th scope="col">Action</th>
@@ -62,11 +94,12 @@ export default function ListBarang() {
                 <tr key={barang.id_barang}>
                   <td>{barang.nama_barang}</td>
                   <td>{barang.keterangan}</td>
+                  <td>{barang.qty}</td>
                   <td>
                     {new Intl.NumberFormat("id-ID", {
                       style: "currency",
                       currency: "IDR",
-                    }).format(barang.harga)}
+                    }).format(barang.harga * barang.qty)}
                   </td>
                   <td>
                     <img
