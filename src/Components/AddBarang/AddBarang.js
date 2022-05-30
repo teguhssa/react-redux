@@ -71,13 +71,14 @@ export default function AddBarang() {
 
     if (simpleValidator.current.allValid()) {
       if (idBarang) {
+        console.log("state gambar edit", image);
         dispatch(
           editBarang({
             id_barang: idBarang,
             nama_barang: namaBarang,
             keterangan: keterangan,
             harga: harga,
-            gambar: image,
+            gambar: typeof image === "object" ? image : null,
           })
         );
       } else {
@@ -90,7 +91,7 @@ export default function AddBarang() {
           })
         );
       }
-      setThumb(null)
+      // setThumb(null)
     } else {
       simpleValidator.current.showMessages();
     }

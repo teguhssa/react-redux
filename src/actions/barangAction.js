@@ -60,15 +60,13 @@ export const addBarang = (data) => {
         errorMessage: false,
       },
     });
-    
 
-    const formData = new FormData()
-    formData.append("nama_barang", data.nama_barang)
-    formData.append("keterangan", data.keterangan)
+    const formData = new FormData();
+    formData.append("nama_barang", data.nama_barang);
+    formData.append("keterangan", data.keterangan);
     formData.append("harga", data.harga);
     formData.append("gambar", data.gambar);
 
-   
     // get API
     axios({
       method: "POST",
@@ -168,11 +166,13 @@ export const editBarang = (data) => {
       },
     });
 
-    const formData = new FormData()
-    formData.append("nama_barang", data.nama_barang)
-    formData.append("keterangan", data.keterangan)
+    const formData = new FormData();
+    formData.append("nama_barang", data.nama_barang);
+    formData.append("keterangan", data.keterangan);
     formData.append("harga", data.harga);
-    formData.append("gambar", data.gambar);
+    if (data.gambar !== null) {
+      formData.append("gambar", data.gambar);
+    }
 
     // get API
     axios({
@@ -191,7 +191,8 @@ export const editBarang = (data) => {
       .then((response) => {
         // console.log("3. dapet data", response.data)
         console.log("data id is here", data.id_barang);
-        console.log("gambar edit", data.gambar)
+        console.log("gambar edit", data.gambar);
+        console.log("Disini datanya", formData);
         dispatch({
           type: EDIT_BARANG,
           payload: {

@@ -32,12 +32,16 @@ export default function ListBarang() {
   }, [deleteBarangResult, dispatch]);
 
   const handleGenerate = () => {
-    alert("button clicked")
-  }
+    alert("Download document");
+  };
 
   return (
     <div>
-      <Button variant="outlined" startIcon={<FileDownloadOutlinedIcon />} onClick={handleGenerate}>
+      <Button
+        variant="outlined"
+        startIcon={<FileDownloadOutlinedIcon />}
+        onClick={handleGenerate}
+      >
         Download
       </Button>
       <table>
@@ -58,8 +62,18 @@ export default function ListBarang() {
                 <tr key={barang.id_barang}>
                   <td>{barang.nama_barang}</td>
                   <td>{barang.keterangan}</td>
-                  <td>{barang.harga}</td>
-                  <td><img src={"http://localhost:8000/" + barang.gambar} className="prev"/></td>
+                  <td>
+                    {new Intl.NumberFormat("id-ID", {
+                      style: "currency",
+                      currency: "IDR",
+                    }).format(barang.harga)}
+                  </td>
+                  <td>
+                    <img
+                      src={"http://localhost:8000/" + barang.gambar}
+                      className="prev"
+                    />
+                  </td>
                   <td>
                     <button
                       onClick={() => dispatch(detailBarang(barang))}
@@ -79,11 +93,9 @@ export default function ListBarang() {
               );
             })
           ) : getListBarangLoading ? (
-            <p>Loading ...</p>
-          ) : getListBarangError ? (
-            getListBarangError
+            <p>Loading . . . .</p>
           ) : (
-            "Data kosong"
+            <p>{getListBarangError ? getListBarangError : "Data Kosong"}</p>
           )}
         </tbody>
       </table>
